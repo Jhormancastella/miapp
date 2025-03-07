@@ -27,5 +27,15 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    // Método toString
+        @Override
+        public String toString() {
+            return "Cliente{" +
+                    "id=" + id +
+                    ", nombre='" + name + '\'' +
+                    ", email='" + email + '\'' +
+                    '}';
+        }
     
 }

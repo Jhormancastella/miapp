@@ -10,7 +10,7 @@ import com.miapp.domain.entity.Product;
 import com.miapp.domain.repository.ClientRespository;
 import com.miapp.domain.repository.ProductRepository;
 import com.miapp.infrastructure.database.ConnectionFactory;
-import com.miapp.infrastructure.persistence.Client.ClientRepositoryImpl;
+import com.miapp.infrastructure.persistence.client.ClientRepositoryImpl;
 import com.miapp.infrastructure.persistence.product.ProductRepositoryImpl;
 
 public class Main {

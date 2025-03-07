@@ -1,4 +1,4 @@
-package com.miapp.infrastructure.persistence.Client;
+package com.miapp.infrastructure.persistence.client;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,13 +19,13 @@ public class ClientRepositoryImpl implements ClientRespository {
         this.connection = connection;
     }
     @Override
-    public void guardar(Client cliente) {
+    public void guardar(Client clientes) {
         String sql = "INSERT INTO client (id, name, email) VALUES (?, ?, ?)";
         try (Connection conexion = connection.getConexion();
              PreparedStatement stmt = conexion.prepareStatement(sql)) {
-            stmt.setInt(1, cliente.getId());
-            stmt.setString(2, cliente.getName());
-            stmt.setString(3, cliente.getEmail());
+            stmt.setInt(1, clientes.getId());
+             stmt.setString(2, clientes.getName());
+                stmt.setString(3, clientes.getEmail());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
