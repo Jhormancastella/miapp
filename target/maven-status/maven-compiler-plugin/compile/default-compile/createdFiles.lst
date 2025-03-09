@@ -1,0 +1,15 @@
+com\miapp\infrastructure\database\ConnMySql.class
+com\miapp\menu\ProductMenu.class
+com\miapp\domain\repository\ClientRespository.class
+com\miapp\infrastructure\persistence\product\ProductRepositoryImpl.class
+com\miapp\Main.class
+com\miapp\domain\entity\Product.class
+com\miapp\domain\repository\ProductRepository.class
+com\miapp\infrastructure\database\ConnectionDb.class
+com\miapp\application\usecase\client\ProductUseCase.class
+com\miapp\infrastructure\persistence\Client\ClientRepositoryImpl.class
+com\miapp\domain\entity\Client.class
+com\miapp\infrastructure\database\ConnectionFactory.class
+com\miapp\menu\ClientMenu.class
+com\miapp\config\HexaSingleton.class
+com\miapp\application\usecase\client\ClientUseCase.class

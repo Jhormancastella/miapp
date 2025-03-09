@@ -1,35 +1,48 @@
 package com.miapp.domain.entity;
 
-
 public class Product {
     private int id;
     private String name;
-    private String stock;
-    public Product(String stock, String name, int id) {
+    private int stock;
+
+    // Constructor
+
+    public Product(int id, String name, int stock) {
         this.id = id;
         this.name = name;
-        this.stock = stock;
+        this.stock = stock; 
     }
-    public Product(int int1, String string, int int2) {
-        return;
-    }
+
+    // Getters y Setters
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public String getstock() {
+
+    public int getStock() { 
         return stock;
     }
-    public void setstock(String stock) {
+
+    public void setStock(int stock) { 
         this.stock = stock;
     }
     
+    
+// Método toString para darle un mejor formato en consola 
+
+    @Override
+    public String toString() {
+        return String.format("| %-4d | %-20s | %-10d |", id, name, stock);
+    }
 }

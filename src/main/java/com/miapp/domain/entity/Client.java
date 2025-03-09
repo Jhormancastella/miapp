@@ -4,38 +4,44 @@ public class Client {
     private int id;
     private String name;
     private String email;
+
+    // Constructor
     public Client(int id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
+
+    // Getters y Setters
+    
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    // Método toString
-        @Override
-        public String toString() {
-            return "Cliente{" +
-                    "id=" + id +
-                    ", nombre='" + name + '\'' +
-                    ", email='" + email + '\'' +
-                    '}';
-        }
-    
+    // Método toString para darle un mejor formato en consola 
+
+    @Override
+    public String toString() {
+        return String.format("| %-4d | %-20s | %-30s |", id, name, email);
+    }
 }

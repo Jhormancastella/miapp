@@ -13,24 +13,26 @@ import com.miapp.infrastructure.database.ConnectionDb;
 
 public class ProductRepositoryImpl implements ProductRepository {
     private final ConnectionDb connection;
-        private java.sql.Statement stmt;
-        public ProductRepositoryImpl(ConnectionDb connection) {
-            this.connection = connection;
+
+    public ProductRepositoryImpl(ConnectionDb connection) {
+        this.connection = connection;
+    }
+    
+    @Override
+    public void guardar(Product product) {
+        String sql = "INSERT INTO product (id, name, stock) VALUES (?, ?, ?)";
+        try (Connection conexion = connection.getConexion();
+             PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setInt(1, product.getId());
+            stmt.setString(2, product.getName());
+            stmt.setInt(3, product.getStock()); // Cambiado a getStock()
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        @Override
-        public void guardar(Product product) {
-            String sql = "INSERT INTO product (id, name, stock) VALUES (?, ?, ?)";
-            try (Connection conexion = connection.getConexion();
-                 PreparedStatement stmt = conexion.prepareStatement(sql)) {
-                stmt.setInt(1, product.getId());
-                stmt.setString(2, product.getName());
-                stmt.setString(3, product.getstock());
-                stmt.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-     @Override
+    }
+    
+    @Override
     public Product buscarPorId(int id) {
         String sql = "SELECT * FROM product WHERE id = ?";
         try (Connection conexion = connection.getConexion();
@@ -51,39 +53,40 @@ public class ProductRepositoryImpl implements ProductRepository {
         List<Product> products = new ArrayList<>();
         String sql = "SELECT * FROM product";
         try (Connection conexion = connection.getConexion();
-             ResultSet rs = stmt.executeQuery(sql)) {
-        while (rs.next()) {
-            products.add(new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("stock")));
+             PreparedStatement stmt = conexion.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) { // Cambiado aquí
+            while (rs.next()) {
+                products.add(new Product(rs.getInt("id"), rs.getString("name"), rs.getInt("stock")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return products;
     }
-    return products;
-}
 
-@Override
-public void actualizar(Product product) {
-    String sql = "UPDATE product SET name = ?, stock = ? WHERE id = ?";
-    try (Connection conexion = connection.getConexion();
-         PreparedStatement stmt = conexion.prepareStatement(sql)) {
-        stmt.setString(1, product.getName());
-        stmt.setString(2, product.getstock());
-        stmt.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
+    @Override
+    public void actualizar(Product product) {
+        String sql = "UPDATE product SET name = ?, stock = ? WHERE id = ?";
+        try (Connection conexion = connection.getConexion();
+             PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setString(1, product.getName());
+            stmt.setInt(2, product.getStock()); // Cambiar a getStock()
+            stmt.setInt(3, product.getId()); // Agregar id para la cláusula WHERE
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void eliminar(int id) {
+        String sql = "DELETE FROM product WHERE id = ?";
+        try (Connection conexion = connection.getConexion();
+             PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
-
-@Override
-public void eliminar(int id) {
-    String sql = "DELETE FROM product WHERE id = ?";
-    try (Connection conexion = connection.getConexion();
-         PreparedStatement stmt = conexion.prepareStatement(sql)) {
-        stmt.setInt(1, id);
-        stmt.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
-}
-

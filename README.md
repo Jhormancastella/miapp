@@ -1,39 +1,95 @@
-
-# 🎯 **Desafío: Implementación de Arquitectura Hexagonal y Patrón Abstract Factory en Java**  
+# 🎯 **Desafío: Implementación de Arquitectura Hexagonal y Patrón Factory en Java**  
 
 📌 **Descripción**  
-El objetivo de este proyecto es implementar una aplicación en Java utilizando la Arquitectura Hexagonal (también conocida como "Puertos y Adaptadores") junto con el patrón de diseño Abstract Factory. La aplicación gestiona clientes, permitiendo operaciones como la creación, consulta y persistencia de datos. La arquitectura garantiza la separación de preocupaciones, facilitando el mantenimiento, la escalabilidad y la independencia de la infraestructura.
+Este proyecto implementa una aplicación en Java utilizando la **Arquitectura Hexagonal** (Puertos y Adaptadores) para gestionar clientes y productos. La arquitectura garantiza la separación de preocupaciones, facilitando el mantenimiento, la escalabilidad y la independencia de la infraestructura. Además, se utiliza el patrón **Abstract Factory** para gestionar conexiones a bases de datos.
 
 🛠️ **Tareas**  
 
 1. Implementar la Arquitectura Hexagonal para separar la lógica de negocio de la infraestructura.  
-2. Utilizar el patrón Abstract Factory para gestionar diferentes tipos de conexiones a bases de datos.  
-3. Crear las entidades, repositorios y casos de uso necesarios para gestionar clientes.  
-4. Configurar la conexión a la base de datos mediante un archivo `config.properties`.  
-5. Implementar pruebas unitarias para garantizar el correcto funcionamiento de la aplicación.  
+2. Utilizar el patrón Abstract Factory para gestionar conexiones a bases de datos.  
+3. Crear entidades, repositorios y casos de uso para gestionar clientes y productos.  
+4. Implementar un menú CRUD interactivo para clientes y productos.  
+5. Configurar la conexión a la base de datos mediante un archivo `config.properties`.  
 
-🚀 **Estructura del Proyecto**  
+🚀 Estructura del Proyecto
 
+📂 Clases Principales
 
-📂 **Clases Principales**  
+🔧 Dominio (Core)
 
-- **Dominio (Core):**  
+Client 🧑‍💼: Entidad que representa a un cliente.
 
-  - `Client`: Entidad que representa a un cliente.  
-  - `ClientRepository`: Interfaz que define los métodos para acceder a los datos de los clientes.  
-- **Caso de Uso:**  
-  - `ClientUseCase`: Implementa la lógica de negocio para gestionar clientes.  
-- **Infraestructura:**  
-  - `ClientRepositoryImpl`: Implementación concreta del repositorio para acceder a la base de datos.  
-  - `ConnMySql`, `ConnectionDb`, `ConnectionFactory`: Clases para gestionar conexiones a bases de datos utilizando el patrón Abstract Factory.  
-- **Configuración:**  
-  - `HexaSingleton`: Clase de configuración para inicializar componentes.  
-  - `config.properties`: Archivo de configuración para la conexión a la base de datos.  
-- **Main:**  
-  - `Main`: Punto de entrada de la aplicación.  
+Product 📦: Entidad que representa a un producto.
+
+ClientRepository 📄: Interfaz para acceder a los datos de clientes.
+
+ProductRepository 📄: Interfaz para acceder a los datos de productos.
+
+🛠️ Caso de Uso
+
+ClientUseCase 🧑‍💻: Implementa la lógica de negocio para gestionar clientes.
+
+ProductUseCase 🧑‍💻: Implementa la lógica de negocio para gestionar productos.
+
+🖥️ Infraestructura
+
+ClientRepositoryImpl 🗄️: Implementación concreta del repositorio de clientes.
+
+ProductRepositoryImpl 🗄️: Implementación concreta del repositorio de productos.
+
+ConnMySql 🔌: Clase para gestionar conexiones a MySQL.
+
+ConnectionFactory 🏭: Clase para gestionar conexiones a bases de datos (patrón Abstract Factory).
+
+📋 Menú
+
+ClientMenu 📝: Menú interactivo para gestionar clientes.
+
+ProductMenu 📝: Menú interactivo para gestionar productos.
+
+⚙️ Configuración
+
+HexaSingleton 🔄: Clase de configuración para inicializar componentes.
+
+config.properties ⚙️: Archivo de configuración para la conexión a la base de datos.
+
+🚪 Main
+
+Main 🏁: Punto de inicio de la aplicación.
+
+🎨 Diagrama Visual de la Estructura
+
+```plaintext
+📦 miapp
+┣ 📂 src/main/java
+┃ ┣ 📂 com.miapp
+┃ ┃ ┣ 📂 application/usecase
+┃ ┃ ┃ ┣ 📄 ClientUseCase.java
+┃ ┃ ┃ ┗ 📄 ProductUseCase.java
+┃ ┃ ┣ 📂 domain
+┃ ┃ ┃ ┣ 📂 entity
+┃ ┃ ┃ ┃ ┣ 📄 Client.java
+┃ ┃ ┃ ┃ ┗ 📄 Product.java
+┃ ┃ ┃ ┗ 📂 repository
+┃ ┃ ┃   ┣ 📄 ClientRepository.java
+┃ ┃ ┃   ┗ 📄 ProductRepository.java
+┃ ┃ ┣ 📂 infrastructure
+┃ ┃ ┃ ┣ 📂 database
+┃ ┃ ┃ ┃ ┣ 📄 ConnMySql.java
+┃ ┃ ┃ ┃ ┗ 📄 ConnectionFactory.java
+┃ ┃ ┃ ┗ 📂 persistence
+┃ ┃ ┃   ┣ 📄 ClientRepositoryImpl.java
+┃ ┃ ┃   ┗ 📄 ProductRepositoryImpl.java
+┃ ┃ ┣ 📂 menu
+┃ ┃ ┃ ┣ 📄 ClientMenu.java
+┃ ┃ ┃ ┗ 📄 ProductMenu.java
+┃ ┃ ┗ 📄 Main.java
+┃ ┗ 📂 resources
+┃   ┗ 📄 config.properties
+┗ 📄 README.md
+```
 
 🚀 **Instalación y Configuración**  
-
 📋 **Requisitos Previos**  
 
 - Java Development Kit (JDK) 17 o superior.  
@@ -50,11 +106,11 @@ git clone https://github.com/Jhormancastella/miapp.git
 
 1. Abre una terminal en la carpeta del proyecto.  
 
-2. Compila el proyecto con Maven:
+2. Compila el proyecto con Maven:  
 
    ```bash
    mvn clean install
-   ```
+   ```  
 
 3. Ejecuta la aplicación:  
 
@@ -62,30 +118,127 @@ git clone https://github.com/Jhormancastella/miapp.git
    java -cp target/miapp.jar com.miapp.Main
    ```  
 
-🛠️ **Uso**  
+🛠️ **Uso**
 
-- La aplicación permite gestionar clientes mediante operaciones CRUD (Crear, Leer, Actualizar, Eliminar).  
+- La aplicación permite gestionar clientes y productos mediante operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
 - Se puede cambiar la base de datos modificando el archivo `config.properties` sin alterar la lógica de negocio.  
+
+> **⚠️ Importante:**  
+> Para que la aplicación funcione correctamente, la base de datos debe tener la estructura adecuada. Asegúrate de que existan las siguientes tablas:  
+>
+> - **Tabla `Client`:**  
+>   - `id` (clave primaria)  
+>   - `name` (nombre del cliente)  
+>   - `email` (correo electrónico del cliente)  
+> - **Tabla `Product`:**  
+>   - `id` (clave primaria)  
+>   - `name` (nombre del producto)  
+>   - `stock` (cantidad en stock)  
+> Si las tablas no están configuradas correctamente, la aplicación no funcionará como se espera.
 
 📋 **Ejemplo de Ejecución**  
 
 ```plaintext
-1. Crear cliente:  
-   Nombre: Juan Pérez  
-   Email: juan@example.com  
-   Cliente creado correctamente.  
+==============================
+        Menú Principal        
+==============================
+1. Gestionar Clientes
+2. Gestionar Productos
+3. Listar Clientes
+4. Listar Productos
+0. Salir
+Ingrese su opción: 1
 
-2. Consultar cliente:  
-   ID: 1  
-   Nombre: Juan Pérez  
-   Email: juan@example.com  
+---- Gestión de Clientes ----
+1. Registrar Cliente
+2. Actualizar Cliente
+3. Eliminar Cliente
+0. Volver al Menú Principal
+Ingrese su opción: 1
+
+Ingrese el nombre del cliente: Juan Pérez
+Ingrese el email del cliente: juan@example.com
+Cliente registrado correctamente.
+
+---- Gestión de Clientes ----
+1. Registrar Cliente
+2. Actualizar Cliente
+3. Eliminar Cliente
+0. Volver al Menú Principal
+Ingrese su opción: 0
+
+==============================
+        Menú Principal        
+==============================
+1. Gestionar Clientes
+2. Gestionar Productos
+3. Listar Clientes
+4. Listar Productos
+0. Salir
+Ingrese su opción: 2
+
+---- Gestión de Productos ----
+1. Registrar Producto
+2. Actualizar Producto
+3. Eliminar Producto
+0. Volver al Menú Principal
+Ingrese su opción: 1
+
+Ingrese el nombre del producto: Laptop
+Ingrese el stock del producto: 10
+Producto registrado correctamente.
+
+---- Gestión de Productos ----
+1. Registrar Producto
+2. Actualizar Producto
+3. Eliminar Producto
+0. Volver al Menú Principal
+Ingrese su opción: 0
+
+==============================
+        Menú Principal        
+==============================
+1. Gestionar Clientes
+2. Gestionar Productos
+3. Listar Clientes
+4. Listar Productos
+0. Salir
+Ingrese su opción: 3
+
+--- Listado de Clientes ---
+ID: 1, Nombre: Juan Pérez, Email: juan@example.com
+
+==============================
+        Menú Principal        
+==============================
+1. Gestionar Clientes
+2. Gestionar Productos
+3. Listar Clientes
+4. Listar Productos
+0. Salir
+Ingrese su opción: 4
+
+--- Listado de Productos ---
+ID: 1, Nombre: Laptop, Stock: 10
+
+==============================
+        Menú Principal        
+==============================
+1. Gestionar Clientes
+2. Gestionar Productos
+3. Listar Clientes
+4. Listar Productos
+0. Salir
+Ingrese su opción: 0
+Saliendo del programa...
 ```  
 
 📋 **Características**  
 
-- Implementación de la Arquitectura Hexagonal para separar la lógica de negocio de la infraestructura.  
+- Implementación de la Arquitectura Hexagonal para separar la lógica de negocio de la infraestructura.
 - Uso del patrón Abstract Factory para gestionar conexiones a bases de datos.  
 - Configuración centralizada mediante `config.properties`.  
+- Menús interactivos para gestionar clientes y productos.  
 - Fácil mantenimiento y escalabilidad gracias a la modularidad.  
 
 🚨 **Estado del Ejercicio**  

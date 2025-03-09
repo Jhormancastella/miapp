@@ -5,9 +5,6 @@ import java.util.List;
 import com.miapp.domain.entity.Product;
 import com.miapp.domain.repository.ProductRepository;
 
-
-
-
 public class ProductUseCase {
     
     private final ProductRepository repository;
@@ -16,36 +13,25 @@ public class ProductUseCase {
         this.repository = repository;
     }
 
-    public void registrarproducto(String id, String nombre, int stock) {
-        Product producto = new Product(id, nombre, stock);
+    public void registrarProducto(int productId, String productName, int stock) {
+        Product producto = new Product(productId, productName, stock);
         repository.guardar(producto);
     }
-
-    public Product obtenerproducto(int id) {
+    
+    public Product obtenerProducto(int id) {
         return repository.buscarPorId(id);
     }
 
-    public List<Product> listarproductos() {
+    public List<Product> listarProductos() {
         return repository.listarTodos();
     }
 
-    public void actualizarproducto(String id, String nombre, int stock) {
-        Product producto = new Product(id, nombre, stock);
+    public void actualizarProducto(int productId, String productName, int stock) {
+        Product producto = new Product(productId, productName, stock);
         repository.actualizar(producto);
     }
 
-    public void eliminarproducto(int id) {
+    public void eliminarProducto(int id) {
         repository.eliminar(id);
     }
-
-    public void registrarProducto(int productId, String productName, int stock) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'registrarProducto'");
-    }
-
-    public List<Product> listarProductos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarProductos'");
-    }
-
 }

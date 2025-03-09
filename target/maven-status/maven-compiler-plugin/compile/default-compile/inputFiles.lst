@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\application\usecase\client\ClientUseCase.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\application\usecase\client\ProductUseCase.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\config\HexaSingleton.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\domain\entity\Client.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\domain\entity\Product.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\domain\repository\ClientRespository.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\domain\repository\ProductRepository.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\infrastructure\database\ConnectionDb.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\infrastructure\database\ConnectionFactory.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\infrastructure\database\ConnMySql.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\infrastructure\persistence\Client\ClientRepositoryImpl.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\infrastructure\persistence\product\ProductRepositoryImpl.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\Main.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\menu\ClientMenu.java
+C:\Users\Admin\Desktop\miapp\src\main\java\com\miapp\menu\ProductMenu.java
