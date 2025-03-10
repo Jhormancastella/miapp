@@ -87,17 +87,19 @@ public class ProductMenu {
         // Verificar si la lista está vacía
 
         if (productos.isEmpty()) {
-            System.out.println("\nNo hay productos registrados.");
+            System.out.println("\n No hay productos registrados.");
             System.out.println("Por favor, ingrese productos para poder listarlos.");
         } else {
             // Si hay productos, mostrarlos en formato de tabla
+
             System.out.println("\nLista de Productos:");
             System.out.println("+------+----------------------+------------+");
             System.out.println("|  ID  |  Nombre              |   Stock    |");
             System.out.println("+------+----------------------+------------+");
     
             for (Product producto : productos) {
-                System.out.println(producto); // Usa el método toString() de la clase Product
+                // Usa el método toString() de la clase Product
+                System.out.println(producto); 
             }
     
             System.out.println("+------+----------------------+------------+");

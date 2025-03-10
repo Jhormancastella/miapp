@@ -129,7 +129,7 @@ git clone https://github.com/Jhormancastella/miapp.git
 > - Si no tienes Maven instalado, puedes compilar manualmente con `javac` (ver sección 3 de la guía anterior).  
 > - Asegúrate de que el archivo JAR (`miapp.jar`) se haya generado correctamente en la carpeta `target`.  
 >
-> ## **Ejecutar en Visual Studio Code:**  
+## **Ejecutar en Visual Studio Code:**  
 >
 > Si prefieres trabajar en **Visual Studio Code**, sigue estos pasos:  
 >
@@ -137,19 +137,7 @@ git clone https://github.com/Jhormancastella/miapp.git
 > 2. Asegúrate de tener instaladas las extensiones necesarias:  
 >    - **Extension Pack for Java** (para soporte de Java).  
 >    - **Maven for Java** (para integración con Maven).  
-> 3. Abre la terminal integrada en VS Code (`Ctrl +` ñ `) y ejecuta los comandos de Maven:  
->
->    ```bash
->    mvn clean install
->    ```  
->
-> 4. Para ejecutar la aplicación, ve a la clase `Main` (en `src/main/java/com/miapp/Main.java`), haz clic derecho y selecciona **Run Java**.  
-> 5. También puedes ejecutar el archivo JAR generado desde la terminal integrada:  
->
->    ```bash
->    java -cp target/miapp.jar com.miapp.Main
->    ```  
->
+> 3. Abre la terminal integrada en VS Code (`Ctrl +` ñ `) y ejecuta el main:  
 > **¡Listo!** La aplicación debería estar en funcionamiento. Si encuentras algún problema, no dudes en revisar la documentación o contactar al equipo de soporte. 😊
 
 
