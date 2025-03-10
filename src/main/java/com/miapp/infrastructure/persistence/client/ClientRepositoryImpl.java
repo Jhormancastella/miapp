@@ -1,4 +1,4 @@
-package com.miapp.infrastructure.persistence.Client;
+package com.miapp.infrastructure.persistence.client;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

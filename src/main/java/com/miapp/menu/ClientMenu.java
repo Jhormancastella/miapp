@@ -102,6 +102,7 @@ public class ClientMenu {
             }
         }
     }
+    
     // Método para limpiar la consola
 
     private static void limpiarConsola() {

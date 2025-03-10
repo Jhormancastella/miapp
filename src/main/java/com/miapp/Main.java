@@ -252,19 +252,21 @@
 
 package com.miapp;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Scanner;
+
 import com.miapp.application.usecase.client.ClientUseCase;
 import com.miapp.application.usecase.client.ProductUseCase;
 import com.miapp.domain.repository.ClientRespository;
 import com.miapp.domain.repository.ProductRepository;
 import com.miapp.infrastructure.database.ConnectionFactory;
-import com.miapp.infrastructure.persistence.Client.ClientRepositoryImpl;
+import com.miapp.infrastructure.persistence.client.ClientRepositoryImpl;
 import com.miapp.infrastructure.persistence.product.ProductRepositoryImpl;
 import com.miapp.menu.ClientMenu;
 import com.miapp.menu.ProductMenu;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Scanner;
+
 
 public class Main {
 
@@ -283,6 +285,7 @@ public class Main {
                 System.out.println("\n**************************************************");
 
                 // Detalle visual: limpiar consola y pausa
+                
                 Thread.sleep(5000); // Esperar 5 segundos
                 limpiarConsola();  // Limpiar la consola
 
