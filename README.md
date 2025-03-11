@@ -140,7 +140,6 @@ git clone https://github.com/Jhormancastella/miapp.git
 > 3. Abre la terminal integrada en VS Code (`Ctrl +` ñ `) y ejecuta el main:  
 > **¡Listo!** La aplicación debería estar en funcionamiento. Si encuentras algún problema, no dudes en revisar la documentación o contactar al equipo de soporte. 😊
 
-
 🛠️ **Uso**
 
 - La aplicación permite gestionar clientes y productos mediante operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
