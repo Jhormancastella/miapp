@@ -34,4 +34,8 @@ public class ProductUseCase {
     public void eliminarProducto(int id) {
         repository.eliminar(id);
     }
+
+    public boolean existeProducto(int id) {
+        return repository.buscarPorId(id) != null;
+    }
 }

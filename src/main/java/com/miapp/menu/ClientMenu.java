@@ -23,6 +23,13 @@ public class ClientMenu {
             System.out.println("3. Eliminar Cliente");
             System.out.println("0. Volver al Menú Principal");
             System.out.print("Ingrese su opción: ");
+            
+            while (!sc.hasNextInt()) {
+                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                sc.next(); // Limpiar el valor incorrecto del scanner
+                System.out.print("Ingrese su opción: ");
+            }
+            
             clientOption = sc.nextInt();
             sc.nextLine(); 
 
@@ -50,33 +57,106 @@ public class ClientMenu {
 
     private void registrarCliente() {
         System.out.print("Ingrese ID del Cliente: ");
+        while (!sc.hasNextInt()) {
+            System.out.println("ID no válido. Por favor, ingrese un número.");
+            sc.next(); // Limpiar el valor incorrecto del scanner
+            System.out.print("Ingrese ID del Cliente: ");
+        }
         int id = sc.nextInt();
-        sc.nextLine(); 
+        sc.nextLine(); // Consumir la nueva línea
+    
+        // Verificar si el ID ya existe
+        if (clientUseCase.existeCliente(id)) {
+            System.out.println("Error: El ID ya está en uso. No se puede registrar el cliente.");
+            return; // Salir del método si el ID ya existe
+        }
+    
         System.out.print("Ingrese Nombre: ");
         String nombre = sc.nextLine();
+        while (!Validaciones.esTextoValido(nombre)) {
+            System.out.println("Nombre no válido. Solo se permiten letras y espacios.");
+            System.out.print("Ingrese Nombre: ");
+            nombre = sc.nextLine();
+        }
+    
         System.out.print("Ingrese Email: ");
         String email = sc.nextLine();
-        clientUseCase.registrarCliente(id, nombre, email);
-        System.out.println("Cliente registrado exitosamente.");
+        while (!Validaciones.esEmailValido(email)) {
+            System.out.println("Email no válido. Por favor, ingrese un email válido.");
+            System.out.print("Ingrese Email: ");
+            email = sc.nextLine();
+        }
+    
+        try {
+            clientUseCase.registrarCliente(id, nombre, email);
+            System.out.println("Cliente registrado exitosamente.");
+        } catch (Exception e) {
+            System.out.println("Error al registrar el cliente: " + e.getMessage());
+        }
     }
 
     private void actualizarCliente() {
         System.out.print("Ingrese ID del Cliente a actualizar: ");
+        while (!sc.hasNextInt()) {
+            System.out.println("ID no válido. Por favor, ingrese un número.");
+            sc.next(); // Limpiar el valor incorrecto del scanner
+            System.out.print("Ingrese ID del Cliente a actualizar: ");
+        }
         int idActualizar = sc.nextInt();
-        sc.nextLine(); 
+        sc.nextLine(); // Consumir la nueva línea
+    
+        // Verificar si el ID existe
+        if (!clientUseCase.existeCliente(idActualizar)) {
+            System.out.println("Error: El ID no existe. No se puede actualizar el cliente.");
+            return; // Salir del método si el ID no existe
+        }
+    
         System.out.print("Ingrese Nuevo Nombre: ");
         String nuevoNombre = sc.nextLine();
+        while (!Validaciones.esTextoValido(nuevoNombre)) {
+            System.out.println("Nombre no válido. Solo se permiten letras y espacios.");
+            System.out.print("Ingrese Nuevo Nombre: ");
+            nuevoNombre = sc.nextLine();
+        }
+    
         System.out.print("Ingrese Nuevo Email: ");
         String nuevoEmail = sc.nextLine();
-        clientUseCase.actualizarCliente(idActualizar, nuevoNombre, nuevoEmail);
-        System.out.println("Cliente actualizado exitosamente.");
+        while (!Validaciones.esEmailValido(nuevoEmail)) {
+            System.out.println("Email no válido. Por favor, ingrese un email válido.");
+            System.out.print("Ingrese Nuevo Email: ");
+            nuevoEmail = sc.nextLine();
+        }
+    
+        try {
+            clientUseCase.actualizarCliente(idActualizar, nuevoNombre, nuevoEmail);
+            System.out.println("Cliente actualizado exitosamente.");
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el cliente: " + e.getMessage());
+        }
     }
 
     private void eliminarCliente() {
         System.out.print("\nIngrese ID del Cliente a eliminar: ");
+        while (!sc.hasNextInt()) {
+            System.out.println("ID no válido. Por favor, ingrese un número.");
+            sc.next(); // Limpiar el valor incorrecto del scanner
+            System.out.print("Ingrese ID del Cliente a eliminar: ");
+        }
         int idEliminar = sc.nextInt();
-        clientUseCase.eliminarCliente(idEliminar);
-        System.out.println("\nCliente eliminado exitosamente.");
+        sc.nextLine(); // Consumir la nueva línea
+    
+        // Verificar si el ID existe
+        if (!clientUseCase.existeCliente(idEliminar)) {
+            System.out.println("Error: El ID no existe. No se puede eliminar el cliente.");
+            return; // Salir del método si el ID no existe
+        }
+    
+        try {
+            clientUseCase.eliminarCliente(idEliminar);
+            System.out.println("\nCliente eliminado exitosamente.");
+        } catch (Exception e) {
+            System.out.println("Error al eliminar el cliente: " + e.getMessage());
+        }
     }
 
     public void listarClientes() {

@@ -33,4 +33,8 @@ public class ClientUseCase {
     public void eliminarCliente(int id) {
         repository.eliminar(id);
     }
+
+    public boolean existeCliente(int id) {
+        return repository.buscarPorId(id) != null;
+    }
 }

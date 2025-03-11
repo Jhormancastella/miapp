@@ -38,14 +38,15 @@ public class ClientRepositoryImpl implements ClientRespository {
         try (Connection conexion = connection.getConexion();
              PreparedStatement stmt = conexion.prepareStatement(sql)) {
             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return new Client(rs.getInt("id"), rs.getString("name"), rs.getString("email"));
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Client(rs.getInt("id"), rs.getString("name"), rs.getString("email"));
+                }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error al buscar el cliente por ID", e);
         }
-        return null;
+        return null; // Retorna null si no se encuentra el cliente
     }
 
     @Override
