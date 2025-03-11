@@ -26,12 +26,12 @@ public class ProductMenu {
 
             while (!sc.hasNextInt()) {
                 System.out.println("Entrada no válida. Por favor, ingrese un número.");
-                sc.next(); // Limpiar el valor incorrecto del scanner
+                sc.next(); 
                 System.out.print("Ingrese su opción: ");
             }
 
             productOption = sc.nextInt();
-            sc.nextLine(); // Consumir la nueva línea
+            sc.nextLine(); 
 
             limpiarConsola();
 
@@ -59,11 +59,11 @@ public class ProductMenu {
         System.out.print("Ingrese ID del Producto: ");
         while (!sc.hasNextInt()) {
             System.out.println("ID no válido. Por favor, ingrese un número.");
-            sc.next(); // Limpiar el valor incorrecto del scanner
+            sc.next(); 
             System.out.print("Ingrese ID del Producto: ");
         }
         int productId = sc.nextInt();
-        sc.nextLine(); // Consumir la nueva línea
+        sc.nextLine(); 
     
         // Verificar si el ID ya existe
         if (productUseCase.existeProducto(productId)) {
@@ -82,11 +82,11 @@ public class ProductMenu {
         System.out.print("Ingrese Stock del Producto: ");
         while (!sc.hasNextInt()) {
             System.out.println("Stock no válido. Por favor, ingrese un número.");
-            sc.next(); // Limpiar el valor incorrecto del scanner
+            sc.next(); 
             System.out.print("Ingrese Stock del Producto: ");
         }
         int stock = sc.nextInt();
-        sc.nextLine(); // Consumir la nueva línea
+        sc.nextLine(); 
     
         productUseCase.registrarProducto(productId, productName, stock);
         System.out.println("Producto registrado exitosamente.");
@@ -96,11 +96,11 @@ public class ProductMenu {
         System.out.print("Ingrese ID del Producto a actualizar: ");
         while (!sc.hasNextInt()) {
             System.out.println("ID no válido. Por favor, ingrese un número.");
-            sc.next(); // Limpiar el valor incorrecto del scanner
+            sc.next(); 
             System.out.print("Ingrese ID del Producto a actualizar: ");
         }
         int idProductoActualizar = sc.nextInt();
-        sc.nextLine(); // Consumir la nueva línea
+        sc.nextLine(); 
     
         // Verificar si el ID existe
         if (!productUseCase.existeProducto(idProductoActualizar)) {
@@ -119,11 +119,11 @@ public class ProductMenu {
         System.out.print("Ingrese Nuevo Stock: ");
         while (!sc.hasNextInt()) {
             System.out.println("Stock no válido. Por favor, ingrese un número.");
-            sc.next(); // Limpiar el valor incorrecto del scanner
+            sc.next(); 
             System.out.print("Ingrese Nuevo Stock: ");
         }
         int nuevoStock = sc.nextInt();
-        sc.nextLine(); // Consumir la nueva línea
+        sc.nextLine(); 
     
         productUseCase.actualizarProducto(idProductoActualizar, nuevoProductoNombre, nuevoStock);
         System.out.println("Producto actualizado exitosamente.");
@@ -133,11 +133,11 @@ public class ProductMenu {
         System.out.print("Ingrese ID del Producto a eliminar: ");
         while (!sc.hasNextInt()) {
             System.out.println("ID no válido. Por favor, ingrese un número.");
-            sc.next(); // Limpiar el valor incorrecto del scanner
+            sc.next(); 
             System.out.print("Ingrese ID del Producto a eliminar: ");
         }
         int idProductoEliminar = sc.nextInt();
-        sc.nextLine(); // Consumir la nueva línea
+        sc.nextLine(); 
     
         // Verificar si el ID existe
         if (!productUseCase.existeProducto(idProductoEliminar)) {

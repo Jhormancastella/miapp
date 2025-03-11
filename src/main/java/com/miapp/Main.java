@@ -59,6 +59,7 @@ public class Main {
         try (Scanner sc = new Scanner(System.in)) {
             // Crear instancias de los menús
             ClientMenu clientMenu = new ClientMenu(clientUseCase, sc);
+            
             ProductMenu productMenu = new ProductMenu(productUseCase, sc);
 
             int option;
@@ -75,7 +76,8 @@ public class Main {
                
                 while (!sc.hasNextInt()) {
                     System.out.println("Entrada no válida. Por favor, ingrese un número.");
-                    sc.next(); // Limpiar el valor incorrecto del scanner
+                    sc.next(); 
+                    // Limpiar el valor incorrecto del scanner
                     System.out.print("Ingrese su opción: ");
                 }
                 
