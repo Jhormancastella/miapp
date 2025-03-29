@@ -87,6 +87,86 @@ Main 🏁: Punto de inicio de la aplicación.
 ┃ ┗ 📂 resources
 ┃   ┗ 📄 config.properties
 ┗ 📄 README.md
+
+```
+## Diagrama  de flujo
+
+```mermaid
+flowchart TD
+    %% Dominio (Core)
+    subgraph "Dominio (Core)"
+        A["Client"]:::domain
+        B["Product"]:::domain
+        C["ClientRepository"]:::domain
+        D["ProductRepository"]:::domain
+    end
+
+    %% Capa de Aplicación
+    subgraph "Capa de Aplicación"
+        E["ClientUseCase"]:::app
+        F["ProductUseCase"]:::app
+    end
+
+    %% Capa de Infraestructura
+    subgraph "Capa de Infraestructura"
+        subgraph "Persistencia"
+            G["ClientRepositoryImpl"]:::infra
+            H["ProductRepositoryImpl"]:::infra
+        end
+        subgraph "Mod. Base de Datos"
+            I["ConnectionFactory"]:::infra
+            J["ConnMySql"]:::infra
+            K["ConnectionDb"]:::infra
+        end
+    end
+
+    %% Interfaz de Usuario
+    subgraph "Interfaz de Usuario"
+        L["ClientMenu"]:::ui
+        M["ProductMenu"]:::ui
+        N["Validaciones"]:::ui
+    end
+
+    %% Configuración
+    subgraph "Configuración"
+        O["HexaSingleton"]:::config
+        P["config.properties"]:::config
+    end
+
+    %% Punto de entrada
+    Q["Main.java"]:::main
+
+    %% Relaciones
+    Q -->|"invoca"| L
+    Q -->|"invoca"| M
+
+    L -->|"llama"| E
+    M -->|"llama"| F
+
+    E -->|"usa"| C
+    F -->|"usa"| D
+
+    C ---|"implementa"| G
+    D ---|"implementa"| H
+
+    G -->|"usa"| I
+    H -->|"usa"| I
+
+    I -->|"crea"| J
+    I -->|"crea"| K
+
+    O -->|"configura"| P
+
+    N -->|"soporta"| L
+    N -->|"soporta"| M
+
+    %% Estilos con texto negro y negrita
+    classDef domain fill:#add8e6,stroke:#333,stroke-width:2px,color:black,font-weight:bold;
+    classDef app fill:#90ee90,stroke:#333,stroke-width:2px,color:black,font-weight:bold;
+    classDef infra fill:#f4cccc,stroke:#333,stroke-width:2px,color:black,font-weight:bold;
+    classDef ui fill:#ffcc80,stroke:#333,stroke-width:2px,color:black,font-weight:bold;
+    classDef config fill:#ead1dc,stroke:#333,stroke-width:2px,color:black,font-weight:bold;
+    classDef main fill:#fff2cc,stroke:#333,stroke-width:2px,color:black,font-weight:bold;
 ```
 
 🚀 **Instalación y Configuración**  
